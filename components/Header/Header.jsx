@@ -1,17 +1,36 @@
+/* eslint-disable multiline-ternary */
 'use client'
 
+import useUser from '@/hooks/useUser.hook'
+import { useSupabaseClient } from '@supabase/auth-helpers-react'
 import { useRouter } from 'next/navigation'
+import { toast } from 'react-hot-toast'
 import { BiSearch } from 'react-icons/bi'
+import { FaUserAlt } from 'react-icons/fa'
 import { HiHome } from 'react-icons/hi'
 import { RxCaretLeft, RxCaretRight } from 'react-icons/rx'
 import { twMerge } from 'tailwind-merge'
 import { Button } from '../Button'
+import useAuthModal from '../Modal/useAuthModal.hook'
 
 const Header = ({ children, className }) => {
+  const { onOpen } = useAuthModal()
+
   const router = useRouter()
 
-  const handleLogout = () => {
-    console.log('logout')
+  const supabaseClient = useSupabaseClient()
+  const { user } = useUser()
+
+  const handleLogout = async () => {
+    const { error } = await supabaseClient.auth.signOut()
+
+    router.refresh()
+
+    if (error) {
+      toast.error(error.message)
+    } else {
+      toast.success('Logged out successfully')
+    }
   }
 
   return (
@@ -55,27 +74,47 @@ const Header = ({ children, className }) => {
         </ul>
 
         <div className='flex items-center justify-between gap-x-4'>
-          <>
-            <div>
+          {user ? (
+            <div className='flex items-center gap-x-4'>
               <Button
-                className='bg-transparent font-medium text-neutral-300'
-                onClick={() => {}}
-              >
-                Sign up
-              </Button>
-            </div>
-
-            <div>
-              <Button
+                onClick={handleLogout}
                 className='bg-white px-6 py-2'
-                onClick={() => {}}
               >
-                Log in
+                Log out
+              </Button>
+
+              <Button
+                className='flex h-10 w-10 items-center justify-center rounded-full bg-white'
+                onClick={() => router.push('/account')}
+              >
+                <FaUserAlt className='h-5 w-5' />
               </Button>
             </div>
-          </>
+          ) : (
+            <>
+              <div>
+                <Button
+                  className='bg-transparent font-medium text-neutral-300'
+                  onClick={onOpen}
+                >
+                  Sign up
+                </Button>
+              </div>
+
+              <div>
+                <Button
+                  className='bg-white px-6 py-2'
+                  onClick={onOpen}
+                >
+                  Log in
+                </Button>
+              </div>
+            </>
+          )}
         </div>
       </nav>
+
+      {children}
     </header>
   )
 }
