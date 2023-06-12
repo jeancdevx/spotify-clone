@@ -1,4 +1,9 @@
+import getSongByUserId from '@/actions/getSongsByUserId'
 import { Sidebar } from '@/components/Sidebar'
+import ModalProvider from '@/providers/ModalProvider'
+import SupabaseProvider from '@/providers/SupabaseProvider'
+import ToasterProvider from '@/providers/ToasterProvider'
+import UserProvider from '@/providers/UserProvider'
 import { Figtree } from 'next/font/google'
 import './globals.css'
 
@@ -9,11 +14,23 @@ export const metadata = {
   description: 'Listen to your favorite music for free'
 }
 
-export default function RootLayout({ children }) {
+export const revalidate = 0
+
+export default async function RootLayout({ children }) {
+  const songsData = await getSongByUserId()
+
   return (
     <html lang='en'>
       <body className={font.className}>
-        <Sidebar>{children}</Sidebar>
+        <ToasterProvider />
+
+        <SupabaseProvider>
+          <UserProvider>
+            <ModalProvider />
+
+            <Sidebar songs={songsData}>{children}</Sidebar>
+          </UserProvider>
+        </SupabaseProvider>
       </body>
     </html>
   )
