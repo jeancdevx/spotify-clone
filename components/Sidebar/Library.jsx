@@ -1,11 +1,25 @@
 'use client'
 
+import useUser from '@/hooks/useUser.hook'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { TbPlaylist } from 'react-icons/tb'
+import useAuthModal from '../Modal/useAuthModal.hook'
+import useUploadModal from '../UploadModal/useUploadModal.hook'
+import MediaItem from './MediaItem'
 
-const Library = () => {
+const Library = ({ songs }) => {
+  const authModal = useAuthModal()
+  const uploadModal = useUploadModal()
+  const { user } = useUser()
+
   const onClick = () => {
-    console.log('clicked')
+    if (!user) {
+      return authModal.onOpen()
+    }
+
+    // todo: check for subscription
+
+    return uploadModal.onOpen()
   }
 
   return (
@@ -19,13 +33,19 @@ const Library = () => {
         </div>
 
         <AiOutlinePlus
-          className='h-4 w-4 cursor-pointer text-neutral-400'
+          className='h-4 w-4 cursor-pointer text-neutral-400 transition hover:text-neutral-300'
           onClick={onClick}
         />
       </header>
 
       <ul className='mt-4 flex flex-col gap-y-2 px-3'>
-        <li className='text-sm font-medium text-neutral-400'>List of Songs</li>
+        {songs.map((song) => (
+          <MediaItem
+            key={song.id}
+            song={song}
+            onClick={() => {}}
+          />
+        ))}
       </ul>
     </nav>
   )

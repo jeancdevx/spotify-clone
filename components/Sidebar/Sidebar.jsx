@@ -8,7 +8,7 @@ import { Box } from '../Box'
 import Library from './Library'
 import SidebarItem from './SidebarItem'
 
-const Sidebar = ({ children }) => {
+const Sidebar = ({ children, songs }) => {
   const pathname = usePathname()
 
   const routes = useMemo(
@@ -46,7 +46,7 @@ const Sidebar = ({ children }) => {
           </ul>
         </Box>
         <Box className='h-full overflow-y-auto'>
-          <Library />
+          <Library songs={songs} />
         </Box>
       </nav>
 
