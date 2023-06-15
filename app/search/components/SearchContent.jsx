@@ -16,7 +16,7 @@ const SearchContent = ({ songs }) => {
   }
 
   return (
-    <section className='flex w-full flex-col gap-y-2 px-6'>
+    <section className='flex w-full flex-col gap-y-2 px-6 pb-4'>
       {songs.map((song) => (
         <article
           key={song.id}

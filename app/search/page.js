@@ -1,10 +1,12 @@
-import getSongsByTitle from '@/actions/getSongsByTitle'
+import getSongsByTitleOrAuthor from '@/actions/getSongsByTitleOrAuthor'
 import { Header } from '@/components/Header'
 import { SearchInput } from '@/components/SearchInput'
 import SearchContent from './components/SearchContent'
 
+export const revalidate = 0
+
 export default async function Search({ searchParams }) {
-  const songs = await getSongsByTitle({ title: searchParams.title })
+  const songs = await getSongsByTitleOrAuthor({ query: searchParams.title })
 
   return (
     <main className='mx-2 flex h-full w-auto flex-col gap-y-4 overflow-hidden overflow-y-auto rounded-md bg-neutral-800 md:mx-0 md:mr-2'>
