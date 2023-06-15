@@ -1,0 +1,7 @@
+# Directories
+.husky
+.next
+node_modules
+
+# Files
+.env.local
