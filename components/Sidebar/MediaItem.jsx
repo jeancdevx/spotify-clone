@@ -30,7 +30,7 @@ const MediaItem = ({ song, onClick }) => {
         <h2 className='truncate text-sm font-medium text-neutral-100'>
           {song.title}
         </h2>
-        <p className='truncate text-xs text-neutral-400'>{song.author}</p>
+        <p className='truncate text-xs text-neutral-400'>By {song.author}</p>
       </article>
     </li>
   )
