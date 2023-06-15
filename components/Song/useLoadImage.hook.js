@@ -10,7 +10,7 @@ const useLoadImage = (song) => {
     .getPublicUrl(song.image_path)
 
   if (error) {
-    console.log(error)
+    console.error(error)
     return null
   }
 
