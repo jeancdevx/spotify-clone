@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 import qs from 'query-string'
 import { useEffect, useState } from 'react'
 import { Input } from '../Input'
-import useDebounce from './useDebounce'
+import useDebounce from './useDebounce.hook'
 
 const SearchInput = () => {
   const router = useRouter()
@@ -29,6 +29,7 @@ const SearchInput = () => {
       placeholder='What do you want to listen to?'
       value={searchInput}
       onChange={(e) => setSearchInput(e.target.value)}
+      type='search'
     />
   )
 }
