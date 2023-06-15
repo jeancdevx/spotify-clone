@@ -8,18 +8,18 @@ const SongItem = ({ song, onClick }) => {
   const imagePath = useLoadImage(song)
 
   return (
-    <div
+    <article
       onClick={() => onClick(song.id)}
       className='group relative z-30 flex cursor-pointer flex-col items-center justify-center gap-x-4 overflow-hidden rounded-md bg-neutral-400/5 p-3 shadow-sm backdrop-blur-xl'
     >
-      <div className='relative z-10 aspect-square h-full w-full overflow-hidden rounded-md'>
+      <figcaption className='relative z-10 aspect-square h-full w-full overflow-hidden rounded-md'>
         <Image
           src={imagePath || '/images/liked.png'}
           alt={`${song.title} song`}
           className='object-cover transition group-hover:scale-105'
           fill
         />
-      </div>
+      </figcaption>
 
       <div className='flex w-full flex-col items-start gap-y-1 py-4'>
         <h3 className='w-full truncate font-semibold text-white'>
@@ -33,7 +33,7 @@ const SongItem = ({ song, onClick }) => {
       <div className='absolute bottom-24 right-5 z-20'>
         <PlayButton />
       </div>
-    </div>
+    </article>
   )
 }
 
