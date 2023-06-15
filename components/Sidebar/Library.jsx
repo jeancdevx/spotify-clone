@@ -4,6 +4,7 @@ import useUser from '@/hooks/useUser.hook'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { TbPlaylist } from 'react-icons/tb'
 import useAuthModal from '../Modal/useAuthModal.hook'
+import useOnPlay from '../Player/useOnPlay'
 import useUploadModal from '../UploadModal/useUploadModal.hook'
 import MediaItem from './MediaItem'
 
@@ -11,6 +12,7 @@ const Library = ({ songs }) => {
   const authModal = useAuthModal()
   const uploadModal = useUploadModal()
   const { user } = useUser()
+  const onPlay = useOnPlay(songs)
 
   const onClick = () => {
     if (!user) {
@@ -43,7 +45,7 @@ const Library = ({ songs }) => {
           <MediaItem
             key={song.id}
             song={song}
-            onClick={() => {}}
+            onClick={(id) => onPlay(id)}
           />
         ))}
       </ul>
