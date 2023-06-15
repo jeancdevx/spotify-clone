@@ -40,7 +40,7 @@ const LikeButton = ({ songId }) => {
 
   const handleLike = async () => {
     if (!user) {
-      return authModal.open()
+      return authModal.onOpen()
     }
 
     if (isLiked) {
