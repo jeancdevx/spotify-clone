@@ -1,9 +1,12 @@
 'use client'
 
 import { LikeButton } from '@/components/LikeButton'
+import useOnPlay from '@/components/Player/useOnPlay'
 import MediaItem from '@/components/Sidebar/MediaItem'
 
 const SearchContent = ({ songs }) => {
+  const onPlay = useOnPlay(songs)
+
   if (songs.length === 0) {
     return (
       <section className='text-center'>
@@ -16,7 +19,7 @@ const SearchContent = ({ songs }) => {
   }
 
   return (
-    <section className='flex w-full flex-col gap-y-2 px-6 pb-4'>
+    <section className='flex w-full flex-col gap-y-2 px-6 pb-6'>
       {songs.map((song) => (
         <article
           key={song.id}
@@ -24,7 +27,7 @@ const SearchContent = ({ songs }) => {
         >
           <div className='flex-1'>
             <MediaItem
-              onClick={() => {}}
+              onClick={(id) => onPlay(id)}
               song={song}
             />
           </div>
