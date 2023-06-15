@@ -11,7 +11,7 @@ const PageContent = ({ songs }) => {
   }
 
   return (
-    <section className='mb-24 mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6'>
+    <section className='mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6'>
       {songs.map((song) => (
         <SongItem
           key={song.id}
