@@ -75,7 +75,10 @@ const Header = ({ children, className }) => {
             </Link>
           </li>
           <li>
-            <Link className='flex cursor-pointer items-center justify-center rounded-full bg-white p-2 transition-opacity hover:opacity-75'>
+            <Link
+              href='/search'
+              className='flex cursor-pointer items-center justify-center rounded-full bg-white p-2 transition-opacity hover:opacity-75'
+            >
               <BiSearch className='h-5 w-5 text-black' />
             </Link>
           </li>
