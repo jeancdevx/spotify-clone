@@ -56,29 +56,28 @@ const Header = ({ children, className }) => {
             </button>
           </li>
           <li>
-            <Link
-              href='/'
+            <button
               className='flex h-10 w-10 items-center justify-center rounded-full bg-black transition-opacity hover:opacity-75'
               onClick={() => router.forward()}
             >
               <RxCaretRight className='h-8 w-8' />
-            </Link>
+            </button>
           </li>
         </ul>
 
         <ul className='flex items-center gap-x-2 md:hidden'>
           <li>
             <Link
-              href='/search'
+              href='/'
               className='flex cursor-pointer items-center justify-center rounded-full bg-white p-2 transition-opacity hover:opacity-75'
             >
               <HiHome className='h-5 w-5 text-black' />
             </Link>
           </li>
           <li>
-            <button className='flex cursor-pointer items-center justify-center rounded-full bg-white p-2 transition-opacity hover:opacity-75'>
+            <Link className='flex cursor-pointer items-center justify-center rounded-full bg-white p-2 transition-opacity hover:opacity-75'>
               <BiSearch className='h-5 w-5 text-black' />
-            </button>
+            </Link>
           </li>
         </ul>
 
