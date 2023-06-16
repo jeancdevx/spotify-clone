@@ -12,6 +12,7 @@ import { RxCaretLeft, RxCaretRight } from 'react-icons/rx'
 import { twMerge } from 'tailwind-merge'
 import { Button } from '../Button'
 import useAuthModal from '../Modal/useAuthModal.hook'
+import usePlayer from '../Player/usePlayer.hook'
 
 const Header = ({ children, className }) => {
   const { onOpen } = useAuthModal()
@@ -21,9 +22,12 @@ const Header = ({ children, className }) => {
   const supabaseClient = useSupabaseClient()
   const { user } = useUser()
 
+  const player = usePlayer()
+
   const handleLogout = async () => {
     const { error } = await supabaseClient.auth.signOut()
 
+    player.reset()
     router.refresh()
 
     if (error) {
