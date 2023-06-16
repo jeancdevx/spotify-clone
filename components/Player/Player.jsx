@@ -9,8 +9,6 @@ const Player = () => {
   const player = usePlayer()
   const { song } = useGetSongById(player.activeId)
 
-  console.log('song', song)
-
   const songUrl = useLoadSongUrl(song)
 
   if (!song || !songUrl || !player.activeId) return null
