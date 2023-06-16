@@ -10,27 +10,26 @@ const SongItem = ({ song, onClick }) => {
   return (
     <article
       onClick={() => onClick(song.id)}
-      className='group relative z-30 flex cursor-pointer flex-col items-center justify-center gap-x-4 overflow-hidden rounded-md bg-neutral-400/5 p-3 shadow-sm backdrop-blur-xl'
+      className='group relative flex cursor-pointer flex-col items-center justify-center gap-x-4 overflow-hidden rounded-md bg-neutral-400/5 p-3 transition hover:bg-neutral-400/10'
     >
-      <figcaption className='relative z-10 aspect-square h-full w-full overflow-hidden rounded-md'>
+      <figcaption className='relative aspect-square h-full w-full overflow-hidden rounded-md'>
         <Image
-          src={imagePath || '/images/liked.png'}
-          alt={`${song.title} song`}
-          className='object-cover transition group-hover:scale-105'
+          className='object-cover'
+          src={imagePath || '/images/music-placeholder.png'}
           fill
+          alt='Image'
         />
       </figcaption>
 
-      <div className='flex w-full flex-col items-start gap-y-1 py-4'>
-        <h3 className='w-full truncate font-semibold text-white'>
-          {song.title}
-        </h3>
-        <p className='w-full truncate text-sm text-neutral-500'>
-          {song.author}
+      <div className='flex w-full flex-col items-start gap-y-1 pt-4'>
+        <p className='w-full truncate font-semibold'>{song.title}</p>
+
+        <p className='w-full truncate pb-4 text-sm text-neutral-400'>
+          By {song.author}
         </p>
       </div>
 
-      <div className='absolute bottom-24 right-5 z-20'>
+      <div className='absolute bottom-24 right-5'>
         <PlayButton />
       </div>
     </article>
