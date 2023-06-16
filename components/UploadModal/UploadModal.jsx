@@ -54,9 +54,21 @@ const UploadModal = () => {
 
       if (!imageFile || !songFile || !user) {
         toast.error('Please fill all fields')
+        return
       }
 
       const uniqueID = uniqid()
+
+      // validate file types
+      if (songFile.type !== 'audio/mpeg') {
+        toast.error('Please upload an mp3 file for the song')
+        return
+      }
+
+      if (!imageFile.type.startsWith('image/')) {
+        toast.error('Please upload an image file for the image')
+        return
+      }
 
       // upload song
       const { data: songData, error: songError } = await supabaseClient.storage
