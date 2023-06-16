@@ -1,15 +1,19 @@
 'use client'
 
 import Image from 'next/image'
+import usePlayer from '../Player/usePlayer.hook'
 import useLoadImage from '../Song/useLoadImage.hook'
 
 const MediaItem = ({ song, onClick }) => {
+  const player = usePlayer()
   const imageUrl = useLoadImage(song)
 
   const handleClick = () => {
     if (onClick) {
       return onClick(song.id)
     }
+
+    return player.setId(song.id)
   }
 
   return (
