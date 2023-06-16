@@ -5,13 +5,15 @@ import { AiOutlinePlus } from 'react-icons/ai'
 import { TbPlaylist } from 'react-icons/tb'
 import useAuthModal from '../Modal/useAuthModal.hook'
 import useOnPlay from '../Player/useOnPlay'
+import useSubscribeModal from '../SubscribeModal/useSubscribeModal.hook'
 import useUploadModal from '../UploadModal/useUploadModal.hook'
 import MediaItem from './MediaItem'
 
 const Library = ({ songs }) => {
   const authModal = useAuthModal()
+  const subscribeModal = useSubscribeModal()
   const uploadModal = useUploadModal()
-  const { user } = useUser()
+  const { user, subscription } = useUser()
   const onPlay = useOnPlay(songs)
 
   const onClick = () => {
@@ -19,7 +21,9 @@ const Library = ({ songs }) => {
       return authModal.onOpen()
     }
 
-    // todo: check for subscription
+    if (!subscription) {
+      return subscribeModal.onOpen()
+    }
 
     return uploadModal.onOpen()
   }
