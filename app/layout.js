@@ -1,3 +1,4 @@
+import getActiveProductsWithPrices from '@/actions/getActiveProductsWithPrices'
 import getSongByUserId from '@/actions/getSongsByUserId'
 import { Player } from '@/components/Player'
 import { Sidebar } from '@/components/Sidebar'
@@ -19,6 +20,7 @@ export const revalidate = 0
 
 export default async function RootLayout({ children }) {
   const songsData = await getSongByUserId()
+  const products = await getActiveProductsWithPrices()
 
   return (
     <html lang='en'>
@@ -27,7 +29,7 @@ export default async function RootLayout({ children }) {
 
         <SupabaseProvider>
           <UserProvider>
-            <ModalProvider />
+            <ModalProvider products={products} />
 
             <Sidebar songs={songsData}>{children}</Sidebar>
 
