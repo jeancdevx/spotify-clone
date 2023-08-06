@@ -1,6 +1,6 @@
 # Full Stack Spotify Clone with Next.js 13.4 App Router: React, Tailwind, Supabase, PostgreSQL, Stripe
 
-![Spotify Clone](https://private-user-images.githubusercontent.com/72767265/246514930-1f7ca0bf-1448-4cf9-a8da-4884ec60d98c.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiJrZXkxIiwiZXhwIjoxNjg2OTQ0MjMwLCJuYmYiOjE2ODY5NDM5MzAsInBhdGgiOiIvNzI3NjcyNjUvMjQ2NTE0OTMwLTFmN2NhMGJmLTE0NDgtNGNmOS1hOGRhLTQ4ODRlYzYwZDk4Yy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBSVdOSllBWDRDU1ZFSDUzQSUyRjIwMjMwNjE2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDIzMDYxNlQxOTMyMTBaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0xY2EwYjZlYjhlMWRhOGM3OGE5NDBlNDA0NjZkZTlmNzM5ZGI1M2M0YmU2ZmQwZTgwMzk1MjU4YjI2ZGM3MjgxJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.gwwpDXX2miFQrrhq55isoKEvqdXxxTohSi8_-AA1mrk 'Spotify Clone')
+![Slide 16_9 - 1](https://github.com/jcodev2/spotify-clone/assets/72767265/03d0cf22-152a-4e92-b9a2-cafc88d3e680)
 
 ## [Live Demo](https://spotify-clone-jcodev2.vercel.app/)
 
